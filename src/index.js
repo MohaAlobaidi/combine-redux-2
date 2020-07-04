@@ -3,11 +3,28 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import {createStore , combineReducers} from 'redux'
+import {Provider} from 'react-redux'
+
+//import reducer from './component/Reducers'
+import reducerA from './component/reducerA'
+import reducerB from './component/reducerB'
+
+const rootStore = combineReducers({
+  rootA:reducerA,
+  rootB:reducerB
+})
+
+const stor = createStore(rootStore)
 
 ReactDOM.render(
+  <Provider store={stor}>
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
+  </React.StrictMode> 
+  </Provider>
+   ,
+
   document.getElementById('root')
 );
 
